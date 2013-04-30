@@ -22,7 +22,7 @@ elsif ENV['CUCUMBER_OPTS']
   puts "Using CUCUMBER_OPTS #{ENV['CUCUMBER_OPTS'].inspect}, which will override our task-specific profiles. (This is probably not what you want.)"
 end
 
-vendored_cucumber_bin = Dir["#{Rails.root}/vendor/{gems,plugins}/cucumber*/bin/cucumber"].first
+vendored_cucumber_bin = Dir["#{::Rails.root}/vendor/{gems,plugins}/cucumber*/bin/cucumber"].first
 $LOAD_PATH.unshift(File.dirname(vendored_cucumber_bin) + '/../lib') unless vendored_cucumber_bin.nil?
 
 begin
@@ -66,6 +66,13 @@ begin
     Cucumber::Rake::Task.new(:features1) do |t|
       t.cucumber_opts = "--format pretty"
       t.rcov = true
+    end
+
+    Cucumber::Rake::Task.new({:headless_junit => 'db:test:prepare'}, 'Run all features that should pass in headless mode') do |t|
+      t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
+                                       # t.fork = true # You may get faster startup if you set this to false
+      t.profile = 'headless'
+      t.cucumber_opts = "-f junit --out ."
     end
 
     task :features => 'db:test:prepare'
