@@ -72,7 +72,7 @@ begin
       t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
                                        # t.fork = true # You may get faster startup if you set this to false
       t.profile = 'headless'
-      t.cucumber_opts = "-f junit --out ."
+      t.cucumber_opts = "-f junit --out . --tags @roles"
     end
 
     task :features => 'db:test:prepare'
