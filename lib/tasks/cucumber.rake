@@ -75,6 +75,13 @@ begin
       t.cucumber_opts = "-f junit --out . --tags @roles"
     end
 
+    Cucumber::Rake::Task.new({:headless_html => 'db:test:prepare'}, 'Run all features that should pass in headless mode') do |t|
+      t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
+                                       # t.fork = true # You may get faster startup if you set this to false
+      t.profile = 'headless'
+      t.cucumber_opts = "-f html --out result.html --tags @roles"
+    end
+
     task :features => 'db:test:prepare'
     desc 'Run all features in headless and browser modes'
     task :all => [:headless, :browser]
