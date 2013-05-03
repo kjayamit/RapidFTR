@@ -1,3 +1,5 @@
+
+@wip
 Feature: So that I can find a child that has been entered in to RapidFTR
   As a user of the website
   I want to use the advanced search to find all relevant results
@@ -32,15 +34,18 @@ Feature: So that I can find a child that has been entered in to RapidFTR
     When I click text "Select A Criteria"
     And I click text "Name"
     And I fill in "Will" for "criteria_list[0][value]"
+#    And I wait for 25 seconds
     And I search
     And I wait for the page to load
     Then I should see "Will" in the search results
     And I should see "Willis" in the search results
     When I clear the search results
+#    And I wait for 25 seconds
     Then I should not see "Will" in the search results
     And I should not see "Willis" in the search results
 
   @javascript
+    @run
   Scenario: Searching by a dropdown field
     Given I am logged in
     And I am on child advanced search page

@@ -16,6 +16,7 @@ require 'cucumber/web/tableish'
 
 require 'capybara/rails'
 require 'capybara/cucumber'
+require 'capybara-webkit'
 
 require 'cucumber/rspec/doubles'
 require 'spec/support/uploadable_files'
@@ -27,14 +28,16 @@ require 'rack/test'
 Capybara.register_driver :selenium do |app|
   http_client = Selenium::WebDriver::Remote::Http::Default.new
   http_client.timeout = 60
-  Capybara::Selenium::Driver.new(app, :browser => :firefox, :http_client => http_client)
+  #Capybara::Selenium::Driver.new(app, :browser => :firefox, :http_client => http_client)
+  Capybara::Selenium::Driver.new(app, :browser => :firefox)
 end
 
 Capybara.run_server = true #Whether start server when testing
 Capybara.default_selector = :xpath #default selector , you can change to :css
 Capybara.default_wait_time = 2 #When we testing AJAX, we can set a default wait time
 Capybara.ignore_hidden_elements = false #Ignore hidden elements when testing, make helpful when you hide or show elements using javascript
-Capybara.javascript_driver = :selenium #default driver when you using @javascript tag
+Capybara.javascript_driver = :webkit #default driver when you using @javascript tag
+#Capybara.javascript_driver = :selenium
 Capybara.server_boot_timeout = 50
 ActionController::Base.allow_rescue = false
 

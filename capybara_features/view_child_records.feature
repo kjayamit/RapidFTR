@@ -41,7 +41,7 @@ Feature: So that I can filter the types of records being show when viewing searc
     And I should not see "andreas"
     And I should not see "jaco"
     And I should not see "jane"
-    Then show me the page
+#    Then show me the page
 
 
   Scenario: Checking filter by All should by default show all children in alphabetical order
@@ -209,7 +209,7 @@ Feature: So that I can filter the types of records being show when viewing searc
 
     And I select "Flagged" from "filter"
     And I select "Most recently flagged" from "order_by"
-    Then show me the page
+#    Then show me the page
     Then I should see the order zak,meredith,jaco,andreas
 
   @javascript

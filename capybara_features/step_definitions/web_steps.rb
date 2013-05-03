@@ -36,7 +36,9 @@ end
 #end
 
 When /^I search$/ do
-  page.execute_script("$('input[value=\"#{Search}\"]').click();")
+  #page.execute_script("$('input[value=\"#{Search}\"]').click();")
+  #page.driver.wait_until(page.driver.browser.switch_to.alert.accept)
+  find("//input[@value='Search']").click
 end
 
 When /^(?:|I )(?:can )?follow "([^\"]*)"(?: within "([^\"]*)")?$/ do |link, selector|
@@ -284,7 +286,8 @@ And /^I submit the form$/ do
 end
 
 When /^I clear the search results$/ do
-  click_button("reset")
+  #click_button("reset")
+  find("//input[@value='Clear']").click
 end
 
 Then /^I should see first (\d+) records in the search results$/ do |arg1|

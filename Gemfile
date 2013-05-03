@@ -69,6 +69,8 @@ group :development, :test, :cucumber do
   gem 'capybara',         '~> 1.0.1'
   gem 'factory_girl',     '~> 2.6'
   gem 'jasmine',          '~> 1.3.2'
+  gem 'relevance-rcov'
+  gem 'capybara-webkit', '0.11.0'
 end
 
 group :test, :cucumber do
@@ -77,4 +79,6 @@ group :test, :cucumber do
   gem 'selenium-webdriver', '~> 2.30'
   gem 'hpricot',            '~> 0.8.2'
   gem "json_spec",          '~> 1.1.1'
+  gem 'relevance-rcov'
+  gem 'capybara-webkit', '0.11.0'
 end

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" name="Only authorized API clients should be allowed to access the system" skipped="0" tests="3" time="1.146197">
+<testcase classname="Only authorized API clients should be allowed to access the system" name="API user sending bad credentials" time="0.123937">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Only authorized API clients should be allowed to access the system" name="API user sending correct credentials" time="0.539818">
+  <system-out/>
+  <system-err/>
+</testcase>
+<testcase classname="Only authorized API clients should be allowed to access the system" name="API user blacklisted device" time="0.482442">
+  <system-out/>
+  <system-err/>
+</testcase>
+  <system-out>
+    <![CDATA[]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testsuite>
